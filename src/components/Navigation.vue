@@ -3,8 +3,9 @@
         <div class="sidenav">
             <div href="#" class="title">  Trollo-2  </div>
             <div class="menu">
-                <a href="#about"> <Folder style="width: 20px; height: 20px;" />Archive</a>
-                <a href="#services">All board</a>
+                <a v-for="fold in folder" :key="fold.id" :href="fold.href">
+                  <Folder style="width: 20px; height: 20px;" /> {{ fold.name }}
+                </a>
             </div>
         </div>
 
@@ -20,13 +21,13 @@
     </div>
 </template>
 
-<script>
+<script lang="ts" setup>
   import Folder from './icons/Folder.vue'
-  export default {
-    components: {
-      Folder
-    }
-  }
+
+  const folder = [
+    {id: 1, name: 'Archive', href: "#archive"},
+    {id: 2, name: 'All board', href: "#allBoard"}
+  ]
 </script>
 
 <style scoped>
