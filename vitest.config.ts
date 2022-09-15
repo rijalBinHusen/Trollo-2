@@ -6,6 +6,9 @@ export default defineConfig({
   test: {
     globals: true,
     environment: "jsdom",
+    deps: {
+      inline: ['localbase']
+    }
   },
    root: ".", //Define the root
 });
