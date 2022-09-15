@@ -5,12 +5,11 @@
             <div class="menu">
                 <div href="#newFolder" class="new-folder">
                     <p>
-                      New folder <Plus style="width: 25px; height: 25px" />
+                      New folder <Plus class="icon" style="width: 25px; height: 25px" />
                     </p>
                 </div>
                 <a v-for="fold in folder" :key="fold.id" :href="fold.href">
-                  <Plus style="width: 15px; height: 15px" />
-                  <!-- <Folder style="width: 20px; height: 20px;" />  -->
+                  <Plus @click="handleClick" class="icon" style="width: 15px; height: 15px" />
                   {{ fold.name }}
                 </a>
             </div>
@@ -31,6 +30,10 @@
 <script lang="ts" setup>
   import Folder from './icons/Folder.vue'
   import Plus from './icons/Plus.vue'
+
+  const handleClick = () => {
+    console.log('clicked')
+  }
 
   const folder = [
     {id: 1, name: 'Archive', href: "#archive"},
@@ -60,8 +63,7 @@
     text-align: center;
     font-size: x-large;
     font-weight: bolder;
-    font-family: 'Courier New', Courier, monospace;
-    margin-bottom: 10rem;
+    font-family: 'Courier New', Courier, monospace
 }
 
 .menu {
@@ -71,7 +73,7 @@
 .sidenav a {
   padding: 6px 8px 6px 16px;
   text-decoration: none;
-  font-size: 25px;
+  font-size: 1.2rem;
   color: #818181;
   display: block;
 }
@@ -97,4 +99,15 @@
   margin-left: 10px;
   margin-bottom: 30px;
 }
+
+.icon {
+  cursor: pointer;
+}
+
+.icon:hover {
+  -ms-transform: rotate(-15deg); /* IE 9 */
+    -webkit-transform: rotate(-15deg); /* Chrome, Safari, Opera */
+    transform: rotate(-15deg);
+}
+
 </style>

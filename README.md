@@ -2,7 +2,10 @@
 
 ## Useful links
 [I get inline svg icon from here](https://icons8.com/)
-[Unit test](https://www.thisdot.co/blog/getting-started-with-vue-and-vitest)
+[Unit test using vitest](https://www.thisdot.co/blog/getting-started-with-vue-and-vitest)
+[Indexeddb manipulation like firebase style](https://github.com/dannyconnell/localbase#with-npm)
+[fake indexeddb for unit testing](https://www.npmjs.com/search?q=fake%20indexeddb)
+[example unit testing indexeddb](https://dev.to/andyhaskell/testing-your-indexeddb-code-with-jest-2o17)
 
 This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
 
