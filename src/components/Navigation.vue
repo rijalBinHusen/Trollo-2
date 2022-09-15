@@ -3,7 +3,7 @@
         <div class="sidenav">
             <div href="#" class="title">  Trollo-2  </div>
             <div class="menu">
-                <a href="#about">Archive</a>
+                <a href="#about"> <Folder style="width: 20px; height: 20px;" />Archive</a>
                 <a href="#services">All board</a>
             </div>
         </div>
@@ -19,6 +19,15 @@
         </div>
     </div>
 </template>
+
+<script>
+  import Folder from './icons/Folder.vue'
+  export default {
+    components: {
+      Folder
+    }
+  }
+</script>
 
 <style scoped>
 .sidenav {
