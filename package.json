@@ -11,6 +11,8 @@
     "coverage": "vitest run --coverage"
   },
   "dependencies": {
+    "fake-indexeddb": "^4.0.0",
+    "localbase": "^0.7.5",
     "vue": "^3.2.37"
   },
   "devDependencies": {
