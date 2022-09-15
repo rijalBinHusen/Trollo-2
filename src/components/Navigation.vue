@@ -3,8 +3,15 @@
         <div class="sidenav">
             <div href="#" class="title">  Trollo-2  </div>
             <div class="menu">
+                <div href="#newFolder" class="new-folder">
+                    <p>
+                      New folder <Plus style="width: 25px; height: 25px" />
+                    </p>
+                </div>
                 <a v-for="fold in folder" :key="fold.id" :href="fold.href">
-                  <Folder style="width: 20px; height: 20px;" /> {{ fold.name }}
+                  <Plus style="width: 15px; height: 15px" />
+                  <!-- <Folder style="width: 20px; height: 20px;" />  -->
+                  {{ fold.name }}
                 </a>
             </div>
         </div>
@@ -23,6 +30,7 @@
 
 <script lang="ts" setup>
   import Folder from './icons/Folder.vue'
+  import Plus from './icons/Plus.vue'
 
   const folder = [
     {id: 1, name: 'Archive', href: "#archive"},
@@ -82,5 +90,11 @@
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
+}
+
+.new-folder {
+  font-size: 1.3rem;
+  margin-left: 10px;
+  margin-bottom: 30px;
 }
 </style>
