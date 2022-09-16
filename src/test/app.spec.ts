@@ -8,4 +8,13 @@ describe('Mount', () => {
     test('Does wrapper exists', () => {
         expect(wrapper.exists()).toBe(true)
     })
+
+    test('button click', () => {
+        const btn = wrapper.find('span')
+        btn.trigger('click')
+    })
+
+    console.log(wrapper.vm)
+
+    // const btn = wrapper
 })

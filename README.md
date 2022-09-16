@@ -6,6 +6,7 @@
 [Indexeddb manipulation like firebase style](https://github.com/dannyconnell/localbase#with-npm)
 [fake indexeddb for unit testing](https://www.npmjs.com/search?q=fake%20indexeddb)
 [example unit testing indexeddb](https://dev.to/andyhaskell/testing-your-indexeddb-code-with-jest-2o17)
+[Vue testing handbook](https://lmiller1990.github.io/vue-testing-handbook/)
 
 This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
 

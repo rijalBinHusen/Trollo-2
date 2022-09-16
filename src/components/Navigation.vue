@@ -25,3 +25,24 @@
   }
 
 </script>
+
+<style scoped>
+
+.menu-lists a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 1.2rem;
+  color: #818181;
+  display: block;
+}
+
+.menu-lists a:hover {
+  color: #f1f1f1;
+}
+
+.menu-lists {
+  margin-left: 0.8rem;
+  display: inline-flex;
+  align-items: center;
+}
+</style>

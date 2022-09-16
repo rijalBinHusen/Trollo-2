@@ -26,8 +26,8 @@
 </template>
 
 <script lang="ts" setup>
-  import Plus from './icons/Plus.vue'
-  import Modal from './Modal.vue'
+  import Plus from '../components/icons/Plus.vue'
+  import Modal from '../components/Modal.vue'
   import Navigation from '../components/Navigation.vue';
 
   const handleClick = (e: string) => {
@@ -69,18 +69,6 @@
     margin-top: 30px;
 }
 
-.sidenav a {
-  padding: 6px 8px 6px 16px;
-  text-decoration: none;
-  font-size: 1.2rem;
-  color: #818181;
-  display: block;
-}
-
-.sidenav a:hover {
-  color: #f1f1f1;
-}
-
 .main {
   margin-left: 160px; /* Same as the width of the sidenav */
   font-size: 28px; /* Increased text to enable scrolling */
@@ -107,12 +95,6 @@
   -ms-transform: rotate(-15deg); /* IE 9 */
     -webkit-transform: rotate(-15deg); /* Chrome, Safari, Opera */
     transform: rotate(-15deg);
-}
-
-.menu-lists {
-  margin-left: 0.8rem;
-  display: inline-flex;
-  align-items: center;
 }
 
 </style>
