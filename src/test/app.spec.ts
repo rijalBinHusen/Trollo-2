@@ -10,11 +10,10 @@ describe('Mount', () => {
     })
 
     test('button click', () => {
-        const btn = wrapper.find('span')
-        btn.trigger('click')
+        const icon = wrapper.findAll('svg.icon')
+        expect(icon).toHaveLength(3)
+        // console.log(icon.html)
     })
-
-    console.log(wrapper.vm)
 
     // const btn = wrapper
 })

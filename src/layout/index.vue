@@ -6,7 +6,7 @@
 
                 <div href="#newFolder" class="new-folder">
                     <p>
-                      New folder <Plus @click="handleClick('folder')" class="icon" style="width: 25px; height: 25px" />
+                      New folder <Plus @click="handleClick('folder')" class="icon new-folder" style="width: 25px; height: 25px" />
                     </p>
                 </div>
                 <Navigation :folder="folder" />
