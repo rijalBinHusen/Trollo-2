@@ -1,0 +1,118 @@
+<template>
+    <div>
+        <div class="sidenav">
+            <div href="#" class="title">  Trollo-2  </div>
+            <div class="menu">
+
+                <div href="#newFolder" class="new-folder">
+                    <p>
+                      New folder <Plus @click="handleClick('folder')" class="icon" style="width: 25px; height: 25px" />
+                    </p>
+                </div>
+                <Navigation :folder="folder" />
+            </div>
+        </div>
+        <Modal />
+        <div class="main">
+            <h2>Sidebar</h2>
+            <p>This sidebar is of full height (100%) and always shown.</p>
+            <p>Scroll down the page to see the result.</p>
+            <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
+            <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
+            <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
+            <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
+        </div>
+    </div>
+</template>
+
+<script lang="ts" setup>
+  import Plus from './icons/Plus.vue'
+  import Modal from './Modal.vue'
+  import Navigation from '../components/Navigation.vue';
+
+  const handleClick = (e: string) => {
+    console.log('clicked', e)
+  }
+
+  const folder = [
+    {id: 1, name: 'Archive', href: "#archive"},
+    {id: 2, name: 'All board', href: "#allBoard"}
+  ]
+</script>
+
+<style scoped>
+.sidenav {
+    height: 100%;
+    width: 160px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top: 20px;
+    text-align: left;
+}
+
+.title {
+    z-index: 1;
+    top: 0;
+    left: 0;
+    padding-top: 20px;
+    text-align: center;
+    font-size: x-large;
+    font-weight: bolder;
+    font-family: 'Courier New', Courier, monospace
+}
+
+.menu {
+    margin-top: 30px;
+}
+
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 1.2rem;
+  color: #818181;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.main {
+  margin-left: 160px; /* Same as the width of the sidenav */
+  font-size: 28px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+  text-align: left;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+.new-folder {
+  font-size: 1.3rem;
+  margin-left: 10px;
+  margin-bottom: 30px;
+}
+
+.icon {
+  cursor: pointer;
+}
+
+.icon:hover {
+  -ms-transform: rotate(-15deg); /* IE 9 */
+    -webkit-transform: rotate(-15deg); /* Chrome, Safari, Opera */
+    transform: rotate(-15deg);
+}
+
+.menu-lists {
+  margin-left: 0.8rem;
+  display: inline-flex;
+  align-items: center;
+}
+
+</style>
