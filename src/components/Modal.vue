@@ -1,6 +1,6 @@
 <template>
 <!-- The Modal -->
-<div id="myModal" class="modal">
+<div v-if="isShow" id="myModal" class="modal">
 
   <!-- Modal content -->
   <div class="modal-content">
@@ -11,6 +11,14 @@
 </div>
 
 </template>
+
+<script lang="ts" setup>
+
+  const props = defineProps({ isShow: Boolean })
+
+  const isShow = props.isShow
+</script>
+
 <style scoped>
     
     /* The Modal (background) */
