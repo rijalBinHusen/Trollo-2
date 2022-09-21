@@ -15,8 +15,7 @@
 <script lang="ts" setup>
 
   const props = defineProps({ isShow: Boolean })
-
-  const isShow = props.isShow
+  
 </script>
 
 <style scoped>

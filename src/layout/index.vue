@@ -12,7 +12,7 @@
                 <Navigation :folder="folder" />
             </div>
         </div>
-        <Modal />
+        <Modal :isShow="isShow" />
         <div class="main">
             <h2>Sidebar</h2>
             <p>This sidebar is of full height (100%) and always shown.</p>
@@ -26,17 +26,21 @@
 </template>
 
 <script lang="ts" setup>
+  import { ref } from 'vue';
   import Plus from '../components/icons/Plus.vue'
   import Modal from '../components/Modal.vue'
   import Navigation from '../components/Navigation.vue';
 
+  const isShow = ref(false)
+
   const handleClick = (e: string) => {
-    console.log('clicked', e)
+    console.log('clicked')
+    isShow.value = true
   }
 
   const folder = [
-    {id: 1, name: 'Archive', href: "#archive"},
-    {id: 2, name: 'All board', href: "#allBoard"}
+    {id: '1', name: 'Archive', href: "#archive"},
+    {id: '2', name: 'All board', href: "#allBoard"}
   ]
 </script>
 

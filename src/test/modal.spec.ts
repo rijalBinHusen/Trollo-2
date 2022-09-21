@@ -12,7 +12,7 @@ describe('Modal component', () => {
             }
         })
         // expecting the modal element not exists
-        expect(wrapper.find('span').exists()).toBe(false)
+        expect(wrapper.find('#myModal').exists()).toBe(false)
         
     })
 
@@ -24,6 +24,6 @@ describe('Modal component', () => {
             }
         })
         // expecting the modal element exists
-        expect(wrapper.find('span').exists()).toBe(true)
+        expect(wrapper.find('#myModal').exists()).toBe(true)
     })
 })

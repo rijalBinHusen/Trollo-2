@@ -9,10 +9,21 @@ describe('Mount', () => {
         expect(wrapper.exists()).toBe(true)
     })
 
-    test('button click', () => {
+    test('Detect all svg icon', () => {
         const icon = wrapper.findAll('svg.icon')
         expect(icon).toHaveLength(3)
-        // console.log(icon.html)
+    })
+
+    test('Click svg icon in new folder to launch the modal', async () => {
+        // get a button that contain action new folder
+        const icon = wrapper.find('svg.new-folder')
+        // triger the button
+        await icon.trigger('click')
+        // find the modal
+        // const modal = wrapper.find('#myModal')
+        // expect the modal show
+        expect(wrapper.find('#myModal').exists()).toBe(true)
+        // console.log(wrapper)
     })
 
     // const btn = wrapper
