@@ -4,7 +4,7 @@
 
   <!-- Modal content -->
   <div class="modal-content">
-    <span class="close">&times;</span>
+    <span class="close-modal-icon" @click="handleClick">&times;</span>
     <p>Some text in the Modal..</p>
   </div>
 
@@ -15,7 +15,12 @@
 <script lang="ts" setup>
 
   const props = defineProps({ isShow: Boolean })
-  
+  const emit = defineEmits(['closeModal'])
+
+  const handleClick = () => {
+    emit('closeModal')
+  }
+
 </script>
 
 <style scoped>
@@ -45,15 +50,15 @@
     }
     
     /* The Close Button */
-    .close {
+    .close-modal-icon {
       color: #aaaaaa;
       float: right;
       font-size: 28px;
       font-weight: bold;
     }
     
-    .close:hover,
-    .close:focus {
+    .close-modal-icon:hover,
+    .close-modal-icon:focus {
       color: #000;
       text-decoration: none;
       cursor: pointer;

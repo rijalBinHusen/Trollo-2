@@ -12,7 +12,7 @@
                 <Navigation :folder="folder" />
             </div>
         </div>
-        <Modal :isShow="isShow" />
+        <Modal :isShow="isShow" @closeModal="isShow = false" />
         <div class="main">
             <h2>Sidebar</h2>
             <p>This sidebar is of full height (100%) and always shown.</p>
@@ -34,7 +34,6 @@
   const isShow = ref(false)
 
   const handleClick = (e: string) => {
-    console.log('clicked')
     isShow.value = true
   }
 

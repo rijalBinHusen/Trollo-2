@@ -26,5 +26,17 @@ describe('Mount', () => {
         // console.log(wrapper)
     })
 
+    test('Close modal by clock close icon', async () => {
+        // get a button that contain action new folder
+        const icon = wrapper.find('.close-modal-icon')
+        // triger the button
+        await icon.trigger('click')
+        // find the modal
+        // const modal = wrapper.find('#myModal')
+        // expect the modal show
+        expect(wrapper.find('#myModal').exists()).toBe(false)
+        // console.log(wrapper)
+    })
+
     // const btn = wrapper
 })
