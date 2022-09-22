@@ -18,8 +18,6 @@
     folder: Array<folderTypes>
   })
 
-  const folder = props.folder
-
   const handleClick = (e: string) => {
     console.log('asdf')
   }

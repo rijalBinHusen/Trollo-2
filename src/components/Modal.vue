@@ -5,7 +5,7 @@
   <!-- Modal content -->
   <div class="modal-content">
     <span class="close-modal-icon" @click="handleClick">&times;</span>
-    <p>Some text in the Modal..</p>
+    <input type="text" v-model="name" @keyup.enter="handleSubmit">
   </div>
 
 </div>
@@ -13,12 +13,20 @@
 </template>
 
 <script lang="ts" setup>
+import { ref } from 'vue';
+
 
   const props = defineProps({ isShow: Boolean })
   const emit = defineEmits(['closeModal'])
+  const name = ref('')
 
   const handleClick = () => {
     emit('closeModal')
+  }
+
+  const handleSubmit = () => {
+    console.log('enter was fired')
+
   }
 
 </script>

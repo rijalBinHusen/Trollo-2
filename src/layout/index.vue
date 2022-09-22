@@ -9,7 +9,7 @@
                       New folder <Plus @click="handleClick('folder')" class="icon new-folder" style="width: 25px; height: 25px" />
                     </p>
                 </div>
-                <Navigation :folder="folder" />
+                <Navigation :folder="listsFolder" />
             </div>
         </div>
         <Modal :isShow="isShow" @closeModal="isShow = false" />
@@ -26,21 +26,26 @@
 </template>
 
 <script lang="ts" setup>
-  import { ref } from 'vue';
+  import { onBeforeMount, ref } from 'vue';
   import Plus from '../components/icons/Plus.vue'
   import Modal from '../components/Modal.vue'
   import Navigation from '../components/Navigation.vue';
+  import { getSummary } from '../composables/idGenerator'
+  import { getAllFolder, lists } from '../composables/folder'
+  import folderTypes from '../types/folder';
 
   const isShow = ref(false)
+  const listsFolder = ref<folderTypes[]>()
 
   const handleClick = (e: string) => {
     isShow.value = true
   }
 
-  const folder = [
-    {id: '1', name: 'Archive', href: "#archive"},
-    {id: '2', name: 'All board', href: "#allBoard"}
-  ]
+  onBeforeMount(async () => {
+    getSummary()
+    await getAllFolder()
+    listsFolder.value = lists
+  })
 </script>
 
 <style scoped>
