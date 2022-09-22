@@ -21,7 +21,7 @@ import { createFolder } from '../composables/folder';
     isShow: Boolean,
     create: String,
   })
-  const emit = defineEmits(['closeModal', 'submitNewRecord'])
+  const emit = defineEmits(['closeModal', 'renewLists'])
   const name = ref('')
 
   const handleClick = () => {
@@ -30,12 +30,12 @@ import { createFolder } from '../composables/folder';
 
   const handleSubmit = async () => {
     if(name.value) {
-      // props.create == 'folder'
-      //   ? 
-        await createFolder(name.value)
-        // : false
-      emit('submitNewRecord')
+      props.create == 'folder'
+        ? await createFolder(name.value)
+        : false
+      emit('renewLists')
       emit('closeModal')
+      name.value = ''
     }
   }
 

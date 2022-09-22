@@ -8,10 +8,10 @@
                       New folder <Plus @click="handleClick('folder')" class="icon new-folder" style="width: 25px; height: 25px" />
                     </p>
                 </div>
-                <Navigation :folder="listsFolder" />
+                <Navigation @renewLists="renewLists" :folder="listsFolder" />
             </div>
         </div>
-        <Modal :create="create" :isShow="isShow" @closeModal="isShow = false" @submitNewRecord="renewLists" />
+        <Modal :create="create" :isShow="isShow" @closeModal="isShow = false" @renewLists="renewLists" />
         <div class="main">
             <h2>Sidebar</h2>
             <p>This sidebar is of full height (100%) and always shown.</p>
@@ -44,9 +44,6 @@
 
   const renewLists = () => {
     listsFolder.value = lists
-    console.log('renew lsits')
-    console.log(lists)
-    console.log(listsFolder.value)
   }
 
   onBeforeMount(async () => {
@@ -56,7 +53,7 @@
   })
 </script>
 
-<style scoped>
+<style>
 .sidenav {
     height: 100%;
     width: 200px;
@@ -110,6 +107,7 @@
   -ms-transform: rotate(-15deg); /* IE 9 */
     -webkit-transform: rotate(-15deg); /* Chrome, Safari, Opera */
     transform: rotate(-15deg);
+    filter: invert(48%) sepia(79%) saturate(2476%) hue-rotate(86deg) brightness(118%) contrast(119%);
 }
 
 </style>

@@ -1,4 +1,4 @@
-import { getAllData, write } from './indexxeddb'
+import { getAllData, write, deleteDocument } from './indexxeddb'
 import folderTypes from '../types/folder'
 import { generateId } from './idGenerator'
 
@@ -19,8 +19,14 @@ export const getAllFolder = async () => {
 export const createFolder = async (name: string) => {
     let id = generateId('folder')
     let record = { id, name, href: `#${name.replaceAll(' ', '')}` }
-    await write('folder', id, record).then((res:any) => {
-        lists.push(res.data)
-    })
+    let res = await write('folder', id, record)
+    lists = [ ...lists, res.data ]
     return true
+}
+
+
+export const deleteFolder = async function (idFolder: string) {
+    lists = lists.filter((val) => val.id !== idFolder)
+    await deleteDocument('folder', { id: idFolder})
+    return
 }

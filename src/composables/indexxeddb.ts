@@ -15,3 +15,8 @@ export const getStoreWithKey = (nameStore: string) => {
 export const getAllData = function (nameStore: string) {
   return db.collection(nameStore.toLocaleLowerCase()).get();
 }
+
+
+export const deleteDocument = async function (store: string, criteria: object) {
+  db.collection(store.toLowerCase()).doc(criteria).delete();
+}
