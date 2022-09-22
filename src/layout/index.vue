@@ -3,7 +3,6 @@
         <div class="sidenav">
             <div href="#" class="title">  Trollo-2  </div>
             <div class="menu">
-
                 <div href="#newFolder" class="new-folder">
                     <p>
                       New folder <Plus @click="handleClick('folder')" class="icon new-folder" style="width: 25px; height: 25px" />
@@ -12,7 +11,7 @@
                 <Navigation :folder="listsFolder" />
             </div>
         </div>
-        <Modal :isShow="isShow" @closeModal="isShow = false" />
+        <Modal :create="create" :isShow="isShow" @closeModal="isShow = false" @submitNewRecord="renewLists" />
         <div class="main">
             <h2>Sidebar</h2>
             <p>This sidebar is of full height (100%) and always shown.</p>
@@ -35,23 +34,32 @@
   import folderTypes from '../types/folder';
 
   const isShow = ref(false)
-  const listsFolder = ref<folderTypes[]>()
+  const listsFolder = ref<folderTypes[]>([])
+  const create = ref<string>('')
 
   const handleClick = (e: string) => {
     isShow.value = true
+    create.value = e
+  }
+
+  const renewLists = () => {
+    listsFolder.value = lists
+    console.log('renew lsits')
+    console.log(lists)
+    console.log(listsFolder.value)
   }
 
   onBeforeMount(async () => {
     getSummary()
     await getAllFolder()
-    listsFolder.value = lists
+    renewLists()
   })
 </script>
 
 <style scoped>
 .sidenav {
     height: 100%;
-    width: 160px;
+    width: 200px;
     position: fixed;
     z-index: 1;
     top: 0;
@@ -92,7 +100,6 @@
 .new-folder {
   font-size: 1.3rem;
   margin-left: 10px;
-  margin-bottom: 30px;
 }
 
 .icon {

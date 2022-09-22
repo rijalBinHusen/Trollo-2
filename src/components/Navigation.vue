@@ -5,6 +5,7 @@
       <a :href="fold.href">
         {{ fold.name }}
       </a>
+      <br />
     </span>
   </div>
 </template>
@@ -42,5 +43,6 @@
   margin-left: 0.8rem;
   display: inline-flex;
   align-items: center;
+  width: 100%;
 }
 </style>

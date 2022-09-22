@@ -5,7 +5,7 @@
   <!-- Modal content -->
   <div class="modal-content">
     <span class="close-modal-icon" @click="handleClick">&times;</span>
-    <input type="text" v-model="name" @keyup.enter="handleSubmit">
+    <input id="name-to-input" type="text" v-model="name" @keyup.enter="handleSubmit">
   </div>
 
 </div>
@@ -14,19 +14,29 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue';
+import { createFolder } from '../composables/folder';
 
 
-  const props = defineProps({ isShow: Boolean })
-  const emit = defineEmits(['closeModal'])
+  const props = defineProps({ 
+    isShow: Boolean,
+    create: String,
+  })
+  const emit = defineEmits(['closeModal', 'submitNewRecord'])
   const name = ref('')
 
   const handleClick = () => {
     emit('closeModal')
   }
 
-  const handleSubmit = () => {
-    console.log('enter was fired')
-
+  const handleSubmit = async () => {
+    if(name.value) {
+      // props.create == 'folder'
+      //   ? 
+        await createFolder(name.value)
+        // : false
+      emit('submitNewRecord')
+      emit('closeModal')
+    }
   }
 
 </script>

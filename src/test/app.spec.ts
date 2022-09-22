@@ -39,5 +39,22 @@ describe('Mount', () => {
         // console.log(wrapper)
     })
 
+    test('Create new folder', async () => {
+        // open the modal
+        // get a button that contain action new folder
+        const icon = wrapper.find('svg.new-folder')
+        // triger the button
+        await icon.trigger('click')
+        // find the input text on modal
+        const inputtext = wrapper.find('#name-to-input')
+        // fill the input
+        await inputtext.setValue('Side job')
+        // trigger the create folder function
+        await inputtext.trigger('keydown.enter')
+        // All svg icon must be 3
+        expect(wrapper.find('svg.icon')).toHaveLength(4)
+        // console.log(wrapper)
+    })
+
     // const btn = wrapper
 })
