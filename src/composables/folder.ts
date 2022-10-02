@@ -1,4 +1,4 @@
-import { getAllData, write, deleteDocument } from './indexxeddb'
+import { getAllData, write, deleteDocument, updateDocument } from './indexxeddb'
 import folderTypes from '../types/folder'
 import { generateId } from './idGenerator'
 
@@ -28,5 +28,29 @@ export const createFolder = async (name: string) => {
 export const deleteFolder = async function (idFolder: string) {
     lists = lists.filter((val) => val.id !== idFolder)
     await deleteDocument('folder', { id: idFolder})
+    return
+}
+
+export async function addProject (idFolder: String, idProject: String) {
+    let objToUpdate = Array<String>();
+    lists = lists.map((rec) => {
+        if(rec.id === idFolder) {
+            objToUpdate = [...rec?.projects, idProject]
+            rec.projects.push(idProject)
+        }
+        return rec
+    })
+    await updateDocument('Folder', idFolder, { projects: objToUpdate })
+    return
+}
+
+export async function updateFolder (idFolder: String, objToUpdate: folderTypes) {
+    lists = lists.map((rec) => {
+        if(rec.id === idFolder) {
+            return { ...rec, ...objToUpdate  }
+        }
+        return rec
+    })
+    await updateDocument('Folder', idFolder, objToUpdate)
     return
 }

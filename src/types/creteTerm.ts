@@ -1,0 +1,1 @@
+export type createTerm = 'Board' | 'Card' | 'Folder' | 'Project'

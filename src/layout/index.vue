@@ -5,13 +5,13 @@
             <div class="menu">
                 <div href="#newFolder" class="new-folder">
                     <p>
-                      New folder <Plus @click="handleClick('folder')" class="icon new-folder" style="width: 25px; height: 25px" />
+                      New folder <Plus @click="handleClick('Folder')" class="icon new-folder" style="width: 25px; height: 25px" />
                     </p>
                 </div>
                 <Navigation @renewLists="renewLists" :folder="listsFolder" />
             </div>
         </div>
-        <Modal :create="create" :isShow="isShow" @closeModal="isShow = false" @renewLists="renewLists" />
+        <Modal :isShow="isShow" @closeModal="isShow = false" @renewLists="renewLists" />
         <div class="main">
             <h2>Sidebar</h2>
             <p>This sidebar is of full height (100%) and always shown.</p>
@@ -32,14 +32,14 @@
   import { getSummary } from '../composables/idGenerator'
   import { getAllFolder, lists } from '../composables/folder'
   import folderTypes from '../types/folder';
+  import { isShow, whatCreate } from '../composables/modalState';
+  import { createTerm } from '../types/creteTerm';
 
-  const isShow = ref(false)
   const listsFolder = ref<folderTypes[]>([])
-  const create = ref<string>('')
 
-  const handleClick = (e: string) => {
+  const handleClick = (term: createTerm) => {
+    whatCreate.value = term
     isShow.value = true
-    create.value = e
   }
 
   const renewLists = () => {

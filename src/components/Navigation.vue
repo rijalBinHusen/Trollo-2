@@ -2,7 +2,7 @@
   <div v-if="folder">
     <span class="menu-lists" v-for="fold in folder" :key="fold.id" >
       <Trash @click="handleRemove(fold.id)" class="icon" style="width: 15px; height: 15px" />
-      <Plus @click="handleClick('board')" class="icon" style="width: 15px; height: 15px" />
+      <Plus @click="handleClick('Project', fold.id)" class="icon" style="width: 15px; height: 15px" />
       <a :href="fold.href">
         {{ fold.name }}
       </a>
@@ -17,20 +17,19 @@
   import Trash from './icons/Trash.vue';
   import folderTypes from '../types/folder';
   import { deleteFolder } from '../composables/folder'
-  import { watch } from 'vue';
+  import { isShow, whatCreate, idParent } from '../composables/modalState';
+  import { createTerm } from '../types/creteTerm';
 
   const props = defineProps({
     folder: Array<folderTypes>
   })
 
-  watch([props], (newVal) => {
-    console.log(props.folder)
-  })
-
   const emit = defineEmits(['renewLists'])
 
-  const handleClick = (e: string) => {
-    console.log('asdf')
+  const handleClick = (term: createTerm, idFolder: string) => {
+    whatCreate.value = term
+    idParent.value = idFolder
+    isShow.value = true
   }
 
   const handleRemove = async (e: string) => {

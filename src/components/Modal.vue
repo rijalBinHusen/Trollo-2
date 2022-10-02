@@ -14,27 +14,28 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue';
-import { createFolder } from '../composables/folder';
+import { createFolder, addProject } from '../composables/folder';
+import { isShow, isCreateFolder, isCreateBoard, isCreateProject, idFolder } from '../composables/modalState';
+import { createProject } from '../composables/Project';
 
-
-  const props = defineProps({ 
-    isShow: Boolean,
-    create: String,
-  })
   const emit = defineEmits(['closeModal', 'renewLists'])
   const name = ref('')
 
   const handleClick = () => {
-    emit('closeModal')
+    isShow.value = false
   }
 
   const handleSubmit = async () => {
     if(name.value) {
-      props.create == 'folder'
-        ? await createFolder(name.value)
-        : false
+      if(isCreateFolder()) {
+        await createFolder(name.value)
+      } else if(isCreateProject()) {
+        let idProject = await createProject(name.value)
+        // console.log(idFolder())
+        await addProject(idFolder(), idProject)
+      }
       emit('renewLists')
-      emit('closeModal')
+      isShow.value = false
       name.value = ''
     }
   }
