@@ -2,7 +2,7 @@ interface folderTypes {
     id: string,
     name: string,
     href: string,
-    projects: String[]
+    projects: Array<String>
 }
 
 export default folderTypes

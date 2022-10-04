@@ -18,7 +18,7 @@ export const getAllFolder = async () => {
 
 export const createFolder = async (name: string) => {
     let id = generateId('folder')
-    let record = { id, name, href: `#${name.replaceAll(' ', '')}` }
+    let record = { id, name, href: `#${name.replaceAll(' ', '')}`, projects: [] }
     let res = await write('folder', id, record)
     lists = [ ...lists, res.data ]
     return true
@@ -40,11 +40,14 @@ export async function addProject (idFolder: String, idProject: String) {
         }
         return rec
     })
-    await updateDocument('Folder', idFolder, { projects: objToUpdate })
+    // console.log(lists)
+    // console.log(objToUpdate)
+    // await updateDocument('Folder', idFolder, { projects: objToUpdate })
+    await updateFolder(idFolder, { projects: objToUpdate })
     return
 }
 
-export async function updateFolder (idFolder: String, objToUpdate: folderTypes) {
+export async function updateFolder (idFolder: String, objToUpdate: Object) {
     lists = lists.map((rec) => {
         if(rec.id === idFolder) {
             return { ...rec, ...objToUpdate  }

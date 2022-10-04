@@ -4,7 +4,7 @@
       <Trash @click="handleRemove(fold.id)" class="icon" style="width: 15px; height: 15px" />
       <Plus @click="handleClick('Project', fold.id)" class="icon" style="width: 15px; height: 15px" />
       <a :href="fold.href">
-        {{ fold.name }}
+        {{ fold.name +'('+fold.projects.length+')' }}
       </a>
       <br />
     </span>
